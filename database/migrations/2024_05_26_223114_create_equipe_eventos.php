@@ -19,12 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('id_funcionario');
             $table->foreign('id_funcionario')->references('id')->on('funcionarios');
 
-            $table->enum('funcao', ['garcom',
-                                    'cozinheiro',
-                                    'ajudante_cozinha',
-                                    'porteiro',
-                                    'maitre',
-                                    'montagem',
+            $table->enum('funcao', ['GARCOM',
+                                    'COZINHEIRO',
+                                    'AJUDANTE_COZINHA',
+                                    'PORTEIRO',
+                                    'MAITRE',
+                                    'MONTAGEM',
             ]);
         });
     }

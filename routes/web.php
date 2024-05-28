@@ -15,7 +15,7 @@ use Inertia\Inertia;
 Route::get('/', [PrincipalController::class, 'principal'])->name('principal');
 Route::get('/fotos', [FotosController::class, 'fotos'])->name('fotos');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('contato');
-Route::post('/contato', [ContatoController::class, 'contato'])->name('contato');
+Route::post('/contato', [ContatoController::class, 'salvar'])->name('contato');
 Route::get('/sobre_nos', [SobreNosController::class, 'sobre_nos'])->name('sobre_nos');
 
 /*Route::get('/', function () {

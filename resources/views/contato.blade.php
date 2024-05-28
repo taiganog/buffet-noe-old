@@ -15,16 +15,16 @@
 						<input type="text" name="nome" placeholder="Nos informe seu nome" class="conteudo-grid-formulario" required>
 						<input type="email" name="email" placeholder="Nos informe seu email" class="conteudo-grid-formulario" required>
 						<input type="tel" name="telefone" placeholder="Nos informe seu telefone" class="conteudo-grid-formulario" required>
-						<select name="categoria-festa" class="conteudo-grid-formulario" required>
+						<select name="tipo" class="conteudo-grid-formulario" required>
 							<option value="" disabled selected>Selecione o tipo de evento</option>
-							<option value="festa">Festa Infantil</option>
-							<option value="formatura">Formatura</option>
-							<option value="casamento">Casamento</option>
-							<option value="15-anos">15 Anos</option>
-							<option value="confraternizacao">Confraternização</option>
+							<option value="FESTA_INFANTIL">Festa Infantil</option>
+							<option value="FORMATURA">Formatura</option>
+							<option value="CASAMENTO">Casamento</option>
+							<option value="15_ANOS">15 Anos</option>
+							<option value="CONFRATERNIZACAO">Confraternização</option>
 						</select>
 					</div>
-					<textarea name="orcamento" placeholder="Conte-nos sobre sua ideia!" class="conteudo-grid-formulario" id="texto-formulario" rows="4" cols="50" required></textarea>
+					<textarea name="mensagem" placeholder="Conte-nos sobre sua ideia!" class="conteudo-grid-formulario" id="texto-formulario" rows="4" cols="50" required></textarea>
 
 					<input type="submit" value="Enviar" class="enviar-formulario"></button>
 				</form>
