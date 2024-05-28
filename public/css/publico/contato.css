@@ -1,0 +1,30 @@
+#imagem-background-contato {
+	overflow: hidden;
+	width: 100%;
+	object-fit: scale-down;
+	border-bottom: 1px solid black;
+}
+
+#wrapper-formulario {
+	position: absolute;
+
+	padding: 30px;
+
+	text-align: center;
+
+	top: 20vh;
+	right: 4vw;
+	width: 60%;
+
+	background-color: black;
+	color: white;
+
+	opacity: 0.8;
+
+	border-radius: 3rem;
+}
+
+#texto-formulario {
+	margin-top: 3rem;
+	width: 100%;
+}

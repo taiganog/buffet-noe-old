@@ -1,0 +1,75 @@
+/*
+| Classes gerais e estilos aplicados em elementos que aparecem em mais de uma seção
+| vem do arquivo base.
+*/
+
+* {
+	font-family: montserrat, sans-serif, arial;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;	
+}
+
+html {
+	font-size: 62.5%;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+input::placeholder {
+	font-size: 1.8rem;
+}
+
+textarea {
+	resize: none;
+}
+
+textarea, input, select {
+	font-size: 1.8rem;
+	border: 0px;
+}
+
+.conteudo {
+	text-align: justify;
+	font-size: 2.5rem;
+}
+
+.logo {
+	margin-top: 1rem;
+	width: 21rem; height: 9rem;
+}
+
+.titulo {
+	font-size: 5rem;
+}
+
+.subtitulo {
+	font-size: 4rem;
+}
+
+.formulario {
+	font-size: 3rem;
+}
+
+.grid-formulario {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+}
+
+.conteudo-grid-formulario {
+	border-radius: 10px;
+	padding: 2rem;
+}
+
+.enviar-formulario {
+
+	margin-top: 3rem;
+	padding: 2rem;
+	border-radius: 10px;
+	width: 30%;
+}
+

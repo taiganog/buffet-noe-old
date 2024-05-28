@@ -1,0 +1,52 @@
+#rodape {
+	padding-left: 20vw;
+	padding-right: 20vw;
+	background-color: #2C2F33;
+	color: #CCC;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	text-align: center;
+}
+
+#divisao-rodape {
+	width: 100%;
+	margin: auto;
+	grid-column-start: 1;
+	grid-column-end: 4;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+#rodape-grid {
+	align-self: center;
+	text-align: center;
+}
+
+#informacoes-rodape {
+	font-size: 1.5rem;
+	text-align: center;
+	align-self: center;
+}
+
+#creditos {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+
+	text-align: center;
+}
+
+#icones-social {
+	display: flex;
+	justify-content: left;
+	gap: 6rem;
+}
+
+.img-social {
+	width: 3rem; height: 3rem;
+}
+
+#cobertura {
+	width: 75%;
+}
