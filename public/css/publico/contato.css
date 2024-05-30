@@ -1,8 +1,9 @@
 #imagem-background-contato {
 	overflow: hidden;
 	width: 100%;
-	object-fit: scale-down;
+	object-fit: cover;
 	border-bottom: 1px solid black;
+	min-height: 130vh;
 }
 
 #wrapper-formulario {
@@ -13,7 +14,7 @@
 	text-align: center;
 
 	top: 20vh;
-	right: 4vw;
+	right: 5%;
 	width: 60%;
 
 	background-color: black;
@@ -27,4 +28,23 @@
 #texto-formulario {
 	margin-top: 3rem;
 	width: 100%;
+}
+
+#botao-whatsapp {
+	background-color: #41DC8E;
+}
+
+#logo-botao {
+	height: 2rem;
+}
+
+#erros {
+	position: relative;
+	width: 70%;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+	font-size: 2.5rem;
+	border-radius: 3rem;
+	background-color: #FF474C;
 }

@@ -7,7 +7,6 @@ use App\Http\Controllers\{
                           ContatoController,
                           SobreNosController,
                          };
-
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;

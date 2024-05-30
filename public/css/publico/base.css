@@ -27,7 +27,8 @@ textarea {
 	resize: none;
 }
 
-textarea, input, select {
+textarea, input, select, .botao {
+	opacity: 1;
 	font-size: 1.8rem;
 	border: 0px;
 }
@@ -52,24 +53,28 @@ textarea, input, select {
 
 .formulario {
 	font-size: 3rem;
+	padding: 3rem;
 }
 
 .grid-formulario {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: auto auto;
 	gap: 3rem;
 }
 
 .conteudo-grid-formulario {
+	width: 100%;
 	border-radius: 10px;
 	padding: 2rem;
+	opacity: 1;
 }
 
-.enviar-formulario {
-
+.botao-envio {
 	margin-top: 3rem;
 	padding: 2rem;
 	border-radius: 10px;
-	width: 30%;
+	width: 20%;
+	background-color: #41DC8E;
+	border: 2px solid #006400;
 }
 

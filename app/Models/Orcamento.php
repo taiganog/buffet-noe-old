@@ -11,5 +11,11 @@ class Orcamento extends Model
     const UPDATED_AT = null;
 
     protected $table = 'orcamentos';
-    protected $fillable = ['nome', 'email', 'telefone', 'tipo', 'mensagem'];
+    protected $fillable = [
+        'nome',
+        'email',
+        'telefone',
+        'tipo',
+        'mensagem'
+    ];
 }
