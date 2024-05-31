@@ -29,15 +29,17 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Log in" />
+        <Head title="Buffet - Administrativo" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
+        <img src="img/publico/logo.png" class="mt-5">
+
         <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
+            <div class="mt-5">
+                <InputLabel for="email" value="Login" />
 
                 <TextInput
                     id="email"
@@ -53,7 +55,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Senha" />
 
                 <TextInput
                     id="password"
@@ -67,10 +69,10 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
+            <div class="block mt-5">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ms-2 text-sm text-white">Lembrar-me</span>
                 </label>
             </div>
 
@@ -78,13 +80,13 @@ const submit = () => {
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    class="underline text-sm text-white hover:text-amber-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white-500"
                 >
-                    Forgot your password?
+                    Esqueceu a senha?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                <PrimaryButton class="ms-8" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Entrar
                 </PrimaryButton>
             </div>
         </form>

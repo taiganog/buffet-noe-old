@@ -6,25 +6,32 @@ use App\Http\Controllers\{
                           FotosController,
                           ContatoController,
                           SobreNosController,
+                          LoginController,
                          };
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', [PrincipalController::class, 'principal'])->name('principal');
-Route::get('/fotos', [FotosController::class, 'fotos'])->name('fotos');
-Route::get('/contato', [ContatoController::class, 'contato'])->name('contato');
-Route::post('/contato', [ContatoController::class, 'salvar'])->name('contato');
-Route::get('/sobre_nos', [SobreNosController::class, 'sobre_nos'])->name('sobre_nos');
+Route::middleware('logAcesso')->group(function () {
+    Route::get('/', [PrincipalController::class, 'principal'])->name('principal');
+    Route::get('/fotos', [FotosController::class, 'fotos'])->name('fotos');
+    Route::get('/contato', [ContatoController::class, 'contato'])->name('contato');
+    Route::post('/contato', [ContatoController::class, 'salvar'])->name('contato');
+    Route::get('/sobre_nos', [SobreNosController::class, 'sobre_nos'])->name('sobre_nos');
+});
 
-/*Route::get('/', function () {
+// Route::get('/login', [LoginController::class, 'login'])->name('login');
+
+/*
+Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});*/
+});
+*/
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -37,3 +44,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
