@@ -1,17 +1,22 @@
 <script setup lang="ts">
 	import LayoutPrincipal from '@/Layouts/Publico/LayoutPrincipal.vue';
-	import { ref } from '@vue';
+	import TextInput from '@/Components/TextInput.vue';
+	import SelectInput from '@/Components/SelectInput.vue';
+	import TextArea  from '@/Components/TextArea.vue';
+	import { ref } from 'vue';
+	import { useForm } from '@inertiajs/vue3';
 
-	enum TipoFesta {
-		'FESTA_INFANTIL',
-        '15_ANOS',
-        'FESTA_ADULTO',
-        'FORMATURA',
-        'CASAMENTO',
-        'CONFRATERNIZACAO',
+	const form = useForm({
+	    nome: '',
+	    email: '',
+	    telefone: '',
+	    tipo: '',
+	    mensagem: ''
+	});
+
+	const submit = () => {
+		form.post(route('contato'));
 	}
-
-	const tipoFestas = Object.values(TipoFesta);
 </script>
 
 <template>
@@ -23,12 +28,48 @@
 					<span class="text-4xl font-black">Solicite um orçamento ou deixe um elogio, entraremos em contato!</span>
 				</div>
 
-				<form :action="route('contato')" method="post" class="">
-					<div class="grid grid-cols-2 gap-5 p-5">
-						<input type="text" name="nome" placeholder="Nos informe seu nome" class="">
-						<input type="email" name="email" placeholder="Nos informe seu email" class="">
+				<form @submit="submit" class="text-center">
+					<div class="grid lg:grid-cols-2 gap-5 p-5">
+						<TextInput 
+							id="nome"
+							type="text"
+							placeholder="Insira seu nome"
+							v-model="form.nome"
+							required
+						/>
+						
+						<TextInput 
+							id="email"
+							type="email"
+							placeholder="Insira seu E-mail"
+							v-model="form.email"
+							required
+						/>
+						
+						<TextInput 
+							id="telefone"
+							type="text"
+							placeholder="Insira seu telefone"
+							v-model="form.telefone"
+							required							
+						/>
+
+						<SelectInput
+							id="tipo"
+							v-model="form.tipo"
+							required
+						/>
+
+						<TextArea class="col-start-1 col-end-3" 
+							id="mensagem"
+							v-model="form.mensagem"
+							placeholder="Conte-nos sobre sua ideia!"
+							required
+						/>
 					</div>
-				</form>
+
+					<input type="submit" value="Enviar" class="p-5 bg-green-500 rounded-xl border-2 border-green-700 focus:bg-green-600 m-5 w-1/3">
+				</form> 
 			</div>
 		</div>
 	</LayoutPrincipal>

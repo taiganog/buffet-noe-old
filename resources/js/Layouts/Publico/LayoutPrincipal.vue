@@ -35,9 +35,10 @@
 			<div class="col-start-7">
 				<img src="img/publico/logo.png" class="w-50 h-20 mt-3">
 			</div>
+			<!-- Creditos -->
 			<div class="col-start-1 col-end-9">
 				<hr class="w-4/5 h-1 mx-auto bg-gray-100 border-0 rounded dark:bg-gray-700	">
-				<div class="text-zinc-200 text-center text-xs mt-3 mb-5">Desenvolvido e mantido por Taiguita - 2024/05</div>
+				<div class="text-zinc-200 text-center text-xs mt-3 mb-5">Desenvolvido e mantido por <i>Taiga Nogueira</i> - 2024/05</div>
 			</div>
 		</div>
 	</footer>
