@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\Orcamento;
+use Inertia\Inertia;
 
 class ContatoController extends Controller
 {
@@ -19,7 +20,7 @@ class ContatoController extends Controller
             'CONFRATERNIZACAO' => "Confraternização"
         ];
 
-        return view('contato', ['tipos_festa' => $tipos_festa]);
+        return Inertia::render('Publico/Contato');
     }
 
     public function salvar(Request $request) {
