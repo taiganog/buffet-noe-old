@@ -5,8 +5,8 @@
 <template>
 	<LayoutPrincipal>
 		<div class="flex">
-			<img src="img/publico/main-img.jpg" name="main-img" id="fundo-img" width="100%">
-			<div id="container-entrada">
+			<img src="img/publico/main-img.jpg" class="w-full min-h-fill object-cover overflow-hidden h-min-1/9">
+			<div class="container-entrada absolute">
 				<div id="container-entrada-conteudo">
 					<h2 class="titulo"><b>Arca de Noé - Logo</b></h2><br>
 					<h1 class="subtitulo">Serviço de Buffet</h1><br>
