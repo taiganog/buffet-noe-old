@@ -4,7 +4,7 @@
 	import SelectInput from '@/Components/SelectInput.vue';
 	import TextArea  from '@/Components/TextArea.vue';
 	import { ref } from 'vue';
-	import { useForm } from '@inertiajs/vue3';
+	import { useForm, router } from '@inertiajs/vue3';
 
 	const form = useForm({
 	    nome: '',
@@ -14,9 +14,11 @@
 	    mensagem: ''
 	});
 
-	const submit = () => {
+	const enviar = () => {
 		form.post(route('contato'));
-	}
+		//form.reset(),
+	};
+
 </script>
 
 <template>
@@ -28,7 +30,7 @@
 					<span class="text-4xl font-black">Solicite um orçamento ou deixe um elogio, entraremos em contato!</span>
 				</div>
 
-				<form @submit="submit" class="text-center">
+				<form @submit.prevent="enviar" class="text-center">
 					<div class="grid lg:grid-cols-2 gap-5 p-5">
 						<TextInput 
 							id="nome"
@@ -68,7 +70,7 @@
 						/>
 					</div>
 
-					<input type="submit" value="Enviar" class="p-5 bg-green-500 rounded-xl border-2 border-green-700 focus:bg-green-600 m-5 w-1/3">
+					<input type="submit" value="Enviar" :disabled="form.processing" class="p-5 bg-green-500 rounded-xl border-2 border-green-700 focus:bg-green-600 m-5 w-1/3">
 				</form> 
 			</div>
 		</div>

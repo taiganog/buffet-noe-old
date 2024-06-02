@@ -24,6 +24,7 @@ class ContatoController extends Controller
     }
 
     public function salvar(Request $request) {
+        /*
         $request->validate([
             'nome' => ['required', 'min:4', 'max:100'],
             'telefone' => ['required', 'min:14', 'max:15'],
@@ -47,9 +48,10 @@ class ContatoController extends Controller
 
             'mensagem'          => 'Precisamos da sua ideia! Informe sua mensagem!'
         ]);
-
+        */
+        
         Orcamento::create($request->all());
-
-        return redirect()->route('principal');
+        
+        return to_route('contato');
     }
 }
