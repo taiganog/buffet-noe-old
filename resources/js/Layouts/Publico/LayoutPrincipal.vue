@@ -5,10 +5,10 @@
 	<header class="z-20 shadow shadow-black bg-neutral-900 md:sticky top-0">
 		<div class="md:flex grid md:align-center md:justify-between">
 			<a :href="route('principal')"><img src="img/publico/logo.png" class="w-50 h-20 mt-3 md:ml-20 mx-auto"></a>
-			<ul class="flex gap-10 text-zinc-200 text-xl p-8 md:mr-20 justify-center text-center">
-				<li class="duration-200 hover:text-2xl"><a :href="route('sobre_nos')">Sobre nós</a></li>
-				<li class="duration-200 hover:text-2xl"><a :href="route('fotos')">Fotos</a></li>
-				<li class="duration-200 hover:text-2xl"><a :href="route('contato')">Contato</a></li>
+			<ul class="flex gap-10 text-yellow-200 underline md:no-underline md:text-zinc-200 text-md md:text-xl p-3 md:p-8 md:mr-20 justify-center text-center">
+				<li class="duration-200 md:hover:text-2xl md:hover:text-yellow-200"><a :href="route('sobre_nos')">Sobre nós</a></li>
+				<li class="duration-200 md:hover:text-2xl md:hover:text-yellow-200"><a :href="route('fotos')">Fotos</a></li>
+				<li class="duration-200 md:hover:text-2xl md:hover:text-yellow-200"><a :href="route('contato')">Contato</a></li>
 			</ul>
 		</div>
 	</header>

@@ -24,14 +24,15 @@
 <template>
 	<LayoutPrincipal>
 		<div class="flex">
-			<img src="img/publico/contato-background.jpg" class="w-full brightness-75 object-cover overflow-hidden h-5/6 min-h-screen border-b-2 border-black">
-			<div class="z-10 bg-black opacity-85 absolute text-zinc-200 right-44 top-44 rounded-xl max-w-4xl">
+			<img src="img/publico/contato-background.jpg" class="w-full brightness-75 object-cover overflow-hidden h-5/6 min-h-[900px] border-b-2 border-black">
+			<div class="z-10 bg-black opacity-85 absolute text-zinc-200 right-10 left-10 lg:left-auto lg:right-44 top-44 rounded-xl lg:max-w-4xl">
 				<div class="p-10 text-center">
-					<span class="text-4xl font-black">Solicite um orçamento ou deixe um elogio, entraremos em contato!</span>
+					<h1 class="text-2xl md:text-4xl font-black mb-5">Orçamento Buffet</h1>
+					<span class="md:text-2xl">Nos conte sua ideia ou deixe um elogio, entraremos em contato!</span>
 				</div>
 
 				<form @submit.prevent="enviar" class="text-center">
-					<div class="grid lg:grid-cols-2 gap-5 p-5">
+					<div class="sm:grid sm:grid-cols-2 sm:gap-5 p-5">
 						<TextInput 
 							id="nome"
 							type="text"
@@ -62,7 +63,7 @@
 							required
 						/>
 
-						<TextArea class="col-start-1 col-end-3" 
+						<TextArea class="sm:col-start-1 sm:col-end-3" 
 							id="mensagem"
 							v-model="form.mensagem"
 							placeholder="Conte-nos sobre sua ideia!"
