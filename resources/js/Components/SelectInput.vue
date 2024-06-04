@@ -16,7 +16,7 @@
 </script>
 
 <template>
-	<select v-model="model" class="border-gray-300 focus:border-yellow-500 focus:ring-yellow-500 rounded-xl shadow-sm h-16 text-black w-full my-1 md:m-0 sm:w-auto">
+	<select v-model="model" class="border-gray-300 focus:border-yellow-500 focus:ring-yellow-500 rounded-xl shadow-sm h-16 text-black w-full my-1 md:m-0 md:w-auto">
 		<option value="" disabled selected>Selecione o tipo de evento</option>
 		<option v-for="(tipo, valor) in tiposFesta" :value="valor" :key="tipo">{{ tipo }}</option>
 	</select>

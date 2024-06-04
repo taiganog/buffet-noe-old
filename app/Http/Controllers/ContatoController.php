@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ContatoRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\Orcamento;
@@ -11,26 +12,17 @@ use Inertia\Inertia;
 class ContatoController extends Controller
 {
     public function contato(Request $request) { 
-        $tipos_festa = [
-            'FESTA_INFANTIL' => 'Festa infantil',
-            '15_ANOS' => 'Festa 15 anos',
-            'FESTA_ADULTO' => 'Festa adulta',
-            'FORMATURA' => 'Formatura',
-            'CASAMENTO' => 'Casamento',
-            'CONFRATERNIZACAO' => "Confraternização"
-        ];
-
         return Inertia::render('Publico/Contato');
     }
 
     public function salvar(Request $request) {
-        /*
+        
         $request->validate([
             'nome' => ['required', 'min:4', 'max:100'],
             'telefone' => ['required', 'min:14', 'max:15'],
             'email' => ['email'],
             'tipo' => ['required'],
-            'mensagem' => ['required']
+            'mensagem' => ['required', 'min:20', 'max:500']
         ],
         [
             // Mensagens de validação
@@ -46,12 +38,13 @@ class ContatoController extends Controller
 
             'tipo.required'     => 'Informe o tipo de evento que você deseja!',
 
-            'mensagem'          => 'Precisamos da sua ideia! Informe sua mensagem!'
+            'mensagem'          => 'Precisamos da sua ideia! Informe sua mensagem!',
+            'mensagem.min'      => 'Mínimo de 20 caractéres',
+            'mensagem.max'      => 'Máximo de 500 caractéres'
         ]);
-        */
         
         Orcamento::create($request->all());
         
-        return to_route('contato');
+        return back();
     }
 }

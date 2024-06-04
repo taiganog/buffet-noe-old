@@ -39,7 +39,7 @@ const submit = () => {
                     autofocus
                     autocomplete="name"
                 />
-
+                <span class="text-red-500">{{ form.errors }}</span>
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 

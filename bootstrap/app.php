@@ -16,15 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
+            \App\Http\Middleware\LogAcessoMiddleware::class
         ]);
 
         //
-    })
-
-    ->withMiddleware(function (Middleware $middleware) {
-        $middleware->alias([
-            'logAcesso' => LogAcessoMiddleware::class,
-        ]);
     })
 
     ->withExceptions(function (Exceptions $exceptions) {

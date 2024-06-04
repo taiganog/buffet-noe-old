@@ -7,17 +7,22 @@ use App\Http\Controllers\{
                           ContatoController,
                           SobreNosController,
                           LoginController,
+                          DashboardController
                          };
 use Illuminate\Foundation\Application;
+use \App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::middleware('logAcesso')->group(function () {
+//Route::middleware([\App\Http\Middleware\HandleInertiaRequests::class])->group(function () {
     Route::get('/', [PrincipalController::class, 'principal'])->name('principal');
     Route::get('/fotos', [FotosController::class, 'fotos'])->name('fotos');
     Route::get('/contato', [ContatoController::class, 'contato'])->name('contato');
-    Route::post('/contato', [ContatoController::class, 'salvar'])->name('contato');
-    Route::get('/sobre_nos', [SobreNosController::class, 'sobre_nos'])->name('sobre_nos');
+    Route::post('/contato', [ContatoController::class, 'salvar'])->name('contato.salvar');
+//});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 });
 
 // Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -33,6 +38,7 @@ Route::get('/', function () {
 });
 */
 
+/*
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -42,6 +48,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+*/
 require __DIR__.'/auth.php';
 
