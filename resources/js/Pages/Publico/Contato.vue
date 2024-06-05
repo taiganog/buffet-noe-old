@@ -7,7 +7,7 @@
 
 	import { useMatchMedia } from '@/Components/Metodos/useMatchMedia';
 	import { ref } from 'vue';
-	import { useForm, router } from '@inertiajs/vue3';
+	import { useForm } from '@inertiajs/vue3';
 
 	const telaMobile = useMatchMedia('(max-width: 768px)')
 
@@ -36,7 +36,7 @@
 				</div>
 
 				<!-- Erros de validação para layout mobile -->
-				<div v-if="telaMobile && form.errors.nome" class="bg-red-500 rounded-xl text-center mx-5 p-3 font-bold">
+				<div v-if="telaMobile && form.hasErrors" class="bg-red-500 rounded-xl text-center mx-5 p-3 font-bold">
 					<div v-for="(erro, id) in form.errors" :key="id">{{ erro }}</div>
 				</div>
 
@@ -55,12 +55,14 @@
 							placeholder="Insira seu E-mail"
 							v-model="form.email"
 						/>
+						<!-- Erros de validação para desktop -->
 						<span><InputError v-if="!telaMobile" :message="form.errors.nome" /></span>
 						<span><InputError v-if="!telaMobile" :message="form.errors.email" /></span>
 
 						<TextInput 
 							id="telefone"
-							type="text"
+							type="tel"
+							v-mask="'(00) 90000-0000'"
 							placeholder="Insira seu telefone"
 							v-model="form.telefone"		
 						/>
@@ -69,13 +71,16 @@
 							id="tipo"
 							v-model="form.tipo"	
 						/>
+						<!-- Erros de validação para desktop -->
 						<span><InputError v-if="!telaMobile" :message="form.errors.telefone" /></span>
 						<span><InputError v-if="!telaMobile" :message="form.errors.tipo" /></span>
+
 						<TextArea class="sm:col-start-1 sm:col-end-3" 
 							id="mensagem"
 							v-model="form.mensagem"
 							placeholder="Conte-nos sobre sua ideia!"
 						/>
+						<!-- Erros de validação para desktop -->
 						<InputError v-if="!telaMobile" class="sm:col-start-1 sm:col-end-3" :message="form.errors.mensagem" />
 					</div>
 

@@ -18,6 +18,7 @@ class ContatoController extends Controller
     public function salvar(Request $request) {
         
         $request->validate([
+            // Regras de validação
             'nome' => ['required', 'min:4', 'max:100'],
             'telefone' => ['required', 'min:14', 'max:15'],
             'email' => ['email'],
@@ -45,6 +46,6 @@ class ContatoController extends Controller
         
         Orcamento::create($request->all());
         
-        return back();
+        return back();  
     }
 }
