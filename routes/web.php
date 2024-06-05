@@ -7,7 +7,9 @@ use App\Http\Controllers\{
                           ContatoController,
                           SobreNosController,
                           LoginController,
-                          DashboardController
+                          DashboardController,
+                          EquipeController,
+                          EventosController,
                          };
 use Illuminate\Foundation\Application;
 use \App\Http\Middleware\HandleInertiaRequests;
@@ -23,6 +25,9 @@ use Inertia\Inertia;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/eventos', [EventosController::class, 'index'])->name('eventos');
+    Route::get('/equipe', [EquipeController::class, 'index'])->name('equipe');
+
 });
 
 Route::middleware('auth')->group(function () {
