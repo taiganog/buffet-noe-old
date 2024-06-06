@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('funcionarios', function (Blueprint $table) {
-            $table->string('nome', length: 15);
+            $table->string('nome', length: 100);
             $table->string('telefone', length: 15);
-            $table->string('chave_pix', length: 100);
+            $table->string('chave_pix', length: 100)->nullable();
 
             $table->id();
             $table->timestamps();

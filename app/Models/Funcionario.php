@@ -10,4 +10,5 @@ class Funcionario extends Model
     use HasFactory;
 
     protected $table = 'funcionarios';
+    protected $fillable = ['nome', 'telefone', 'chave_pix'];
 }

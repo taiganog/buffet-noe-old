@@ -24,17 +24,17 @@ use Inertia\Inertia;
 //});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    // Rotas Administrativas
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/eventos', [EventosController::class, 'index'])->name('eventos');
     Route::get('/equipe', [EquipeController::class, 'index'])->name('equipe');
+    Route::post('/equipe', [EquipeController::class, 'create'])->name('equipe');
 
-});
 
-Route::middleware('auth')->group(function () {
+    // Rotas de Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
-
