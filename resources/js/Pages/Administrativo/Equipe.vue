@@ -8,7 +8,7 @@ import { Head, useForm } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 
 defineProps<{
-    funcionarios?: Object,
+    funcionarios?: { nome: string, telefone: string, chave_pix: string, id: number }[]
 }>();
 
 const form = useForm({
@@ -44,9 +44,9 @@ const enviar = () => {
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <!-- Cadastro de novo funcionário -->
-                <div class="sm:flex gap-3">
-                    <div class="bg-white sm:basis-1/3 overflow-hidden shadow-sm
+                <div class="sm:flex gap-3 justify-between">
+                  <!-- Cadastro de novo funcionário -->
+                    <div class="bg-white sm:basis-1/4 overflow-hidden shadow-sm
                                 sm:rounded-lg p-4 relative mb-3 sm:mb-0 max-h-[360px]">
                         <div class="sm:hidden text-sm absolute right-5 rounded-lg
                                     bg-gray-300 p-1 border border-gray-500 select-none"
@@ -81,16 +81,17 @@ const enviar = () => {
                             </form>
                         </div>
                     </div>
-
-                    <div class="bg-white sm:basis-2/3 overflow-hidden shadow-sm sm:rounded-lg p-4 relative">
+                    <!-- Display de funcionários existentes -->
+                    <div class="bg-white sm:basis-2/3 overflow-hidden shadow-sm sm:rounded-lg
+                                p-4 relative">
                         <div class="sm:hidden text-sm absolute right-5 rounded-lg
                                     bg-gray-300 p-1 border border-gray-500 select-none"
                             @click="listaVisible = !listaVisible">{{ listaToggle }}</div>
                         <div class="font-semibold mb-5">Funcionários ativos</div>
 
-                        <div v-if="listaVisible && funcionarios">
-                            <table class="table-fixed border-y-2 border-spacing-2 border-separate w-full">
-                                <thead class="border-2">
+                        <div v-if="listaVisible && funcionarios" class="max-h-[600px] overflow-x-hidden sm:overflow-auto">
+                            <table class="table-fixed w-full border-spacing-y-3 border-separate">
+                                <thead class="text-lg border-y-2 border-black">
                                   <tr>
                                     <th>Nome</th>
                                     <th>Telefone</th>
@@ -98,10 +99,10 @@ const enviar = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr v-for="funcionario in funcionarios" :key="funcionario.id">
-                                    <td>{{ funcionario.nome }}</td>
-                                    <td class="text-center">{{ funcionario.telefone }}</td>
-                                    <td class="text-center">{{ funcionario.chave_pix }}</td>
+                                  <tr v-for="funcionario in funcionarios" :key="funcionario.id" class="text-sm">
+                                    <td class="border-b">{{ funcionario.nome }}</td>
+                                    <td class="text-center border-b">{{ funcionario.telefone }}</td>
+                                    <td class="text-center border-b">{{ funcionario.chave_pix }}</td>
                                   </tr>
                                 </tbody>
                             </table>
