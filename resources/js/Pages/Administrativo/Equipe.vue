@@ -7,8 +7,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 
-defineProps<{
-    funcionarios?: { nome: string, telefone: string, chave_pix: string, id: number }[]
+const props = defineProps<{
+    funcionarios?;
 }>();
 
 const form = useForm({
@@ -24,10 +24,6 @@ const cadastroToggle = computed(() => {
     return cadastroVisible.value ? 'Esconder' : 'Mostrar';
 });
 
-const listaToggle = computed(() => {
-    return listaVisible.value ? 'Esconder' : 'Mostrar';
-});
-
 const enviar = () => {
     form.post(route('equipe'), { preserveScroll: true, onSuccess: () => { form.reset(); }} );
 };
@@ -39,7 +35,7 @@ const enviar = () => {
 
     <AuthenticatedLayout>
         <template #header class="">
-            Equipes
+            Equipe
         </template>
 
         <div class="py-12">
@@ -75,8 +71,9 @@ const enviar = () => {
                               type="text"
                               id="chavePix"
                               v-model="form.chave_pix" />
+
                               <div class="text-right mt-5">
-                                <PrimaryButton>Enviar</PrimaryButton>
+                                <PrimaryButton :disabled="form.processing">Enviar</PrimaryButton>
                               </div>
                             </form>
                         </div>
@@ -84,9 +81,7 @@ const enviar = () => {
                     <!-- Display de funcionários existentes -->
                     <div class="bg-white sm:basis-2/3 overflow-hidden shadow-sm sm:rounded-lg
                                 p-4 relative">
-                        <div class="sm:hidden text-sm absolute right-5 rounded-lg
-                                    bg-gray-300 p-1 border border-gray-500 select-none"
-                            @click="listaVisible = !listaVisible">{{ listaToggle }}</div>
+
                         <div class="font-semibold mb-5">Funcionários ativos</div>
 
                         <div v-if="listaVisible && funcionarios" class="max-h-[600px] overflow-x-hidden sm:overflow-auto">
