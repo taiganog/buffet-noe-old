@@ -10,9 +10,11 @@ const props = defineProps<{
     eventos?;
 }>();
 
+const closeModal = () => { eventoModal.value = !eventoModal };
+
 const eventoVisible = ref(true);
 const eventoModal = ref(false);
-const closeModal = () => { eventoModal.value = !eventoModal };
+const eventoAtual = ref(1);
 </script>
 
 <template>
@@ -32,32 +34,56 @@ const closeModal = () => { eventoModal.value = !eventoModal };
                                 <PrimaryButton>Adicionar Evento</PrimaryButton>
                             </a>
 
-                            <PrimaryButton @click="eventoModal = !eventoModal">Esconder</PrimaryButton>
+                            <PrimaryButton @click="eventoVisible = !eventoVisible">Esconder</PrimaryButton>
                         </div>
                     </div>
 
                     <div v-show="eventoVisible">
                         <!-- Listagem de eventos principais -->
-                        <div class="grid grid-cols-3 text-center text-semibold py-5">
-                            <span>Nome Responsável</span>
-                            <span>Evento</span>
-                            <span>Data</span>
+                        <div class="grid grid-cols-3 text-semibold px-5 pt-5">
+                            <span class="text-right">Nome Responsável</span>
+                            <span class="text-center">Evento</span>
+                            <span class="text-left">Data</span>
                         </div>
 
-                        <hr class="w-11/12 m-auto"/>
+                        <hr class="text-red-500 w-11/12 m-auto b-0 h-1" />
 
                         <div class="p-5 max-h-[600px] overflow-auto">
-                            <div v-for="evento in eventos" :key="evento.id" class="grid grid-cols-3 text-center text-sm">
-                                <span>{{ evento.nome_responsavel }}</span>
-                                <span>{{ evento.tipo }}</span>
-                                <span>{{ evento.data }}</span>
+                            <div v-for="(evento, key) in eventos" class="grid grid-cols-3 text-sm p-1">
+                                <span @click="eventoModal = !eventoModal; eventoAtual = key"
+                                      class="text-blue-400 hover:text-blue-600 cursor-pointer text-right">
+                                      {{ evento.nome_responsavel }}
+                                </span>
+                                <span class="text-center">{{ evento.tipo }}</span>
+                                <span class="text-left">{{ evento.data }}</span>
+                                <hr class="col-start-1 col-end-4" />
                             </div>
                         </div>
                     </div>
 
                     <!-- TODO: Implementar modal de descrição de evento -->
-                    <Modal :show="eventoModal" @close="closeModal">
-                        <p>teste</p>
+                    <Modal :show="eventoModal" maxWidth="full" @close="closeModal">
+
+                            <div class="text-center bg-black text-white font-semibold p-4 flex justify-between">
+                                <span class="content-center">{{ eventos[eventoAtual].nome_responsavel }} - {{ eventos[eventoAtual].tipo }}</span>
+                                <div>
+                                    <PrimaryButton class="mx-5">Editar</PrimaryButton>
+                                    <PrimaryButton @click="closeModal">Fechar</PrimaryButton>
+                                </div>
+                            </div>
+
+                            <div class="p-5 text-sm">
+                                <div class="grid grid-cols-3 text-center">
+                                    <span class="">Telefone da responsável: {{ eventos[eventoAtual].telefone_responsavel }}</span>
+                                    <span class="border-x border-black">Número de convidados: {{ eventos[eventoAtual].numero_convidados }}</span>
+                                    <span>Valor: R$:{{ eventos[eventoAtual].valor }},00</span>
+                                </div>
+                                <hr class="my-5 border-black">
+                                <div>
+                                    <span class="font-semibold underline">Observação</span>
+                                    <p class="mt-2">{{ eventos[eventoAtual].observacao }}</p>
+                                </div>
+                            </div>
                     </Modal>
                 </div>
             </div>

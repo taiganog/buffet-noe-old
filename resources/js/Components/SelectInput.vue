@@ -10,7 +10,8 @@
             'FESTA_ADULTO': 'Festa adulta',
             'FORMATURA': 'Formatura',
             'CASAMENTO': 'Casamento',
-            'CONFRATERNIZACAO': "Confraternização"
+            'CONFRATERNIZACAO': 'Confraternização',
+			'CHURRASCO': 'Churrasco',
     };
 
 </script>

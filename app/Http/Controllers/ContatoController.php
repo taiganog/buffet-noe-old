@@ -11,19 +11,19 @@ use Inertia\Inertia;
 
 class ContatoController extends Controller
 {
-    public function contato(Request $request) { 
+    public function contato(Request $request) {
         return Inertia::render('Publico/Contato');
     }
 
     public function salvar(Request $request) {
-        
+
         $request->validate([
             // Regras de validação
-            'nome' => ['required', 'min:4', 'max:100'],
-            'telefone' => ['required', 'min:14', 'max:15'],
-            'email' => ['email'],
-            'tipo' => ['required'],
-            'mensagem' => ['required', 'min:20', 'max:500']
+            'nome'              => ['required', 'min:4', 'max:100'],
+            'telefone'          => ['required', 'min:14', 'max:15'],
+            'email'             => ['email'],
+            'tipo'              => ['required'],
+            'mensagem'          => ['required', 'min:20', 'max:500']
         ],
         [
             // Mensagens de validação
@@ -43,9 +43,9 @@ class ContatoController extends Controller
             'mensagem.min'      => 'Mínimo de 20 caractéres',
             'mensagem.max'      => 'Máximo de 500 caractéres'
         ]);
-        
+
         Orcamento::create($request->all());
-        
-        return back();  
+
+        return back();
     }
 }

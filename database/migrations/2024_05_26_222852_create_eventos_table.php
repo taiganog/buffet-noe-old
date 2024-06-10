@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('eventos', function (Blueprint $table) {
-            $table->string('nome', length: 100);
-            $table->string('nome_responsavel', length: 100);
-            $table->string('telefone_responsavel', length: 15);
+            $table->id();
+            $table->string('local', length: 150);
             $table->date('data');
             $table->enum('tipo', ['FESTA_INFANTIL',
                                     '15_ANOS',
@@ -22,13 +21,23 @@ return new class extends Migration
                                     'CASAMENTO',
                                     'FORMATURA',
                                     'CONFRATERNIZACAO',
-            ]);
+                                    'CHURRASCO']);
             $table->unsignedSmallInteger('numero_convidados');
             $table->unsignedSmallInteger('valor');
             $table->text('observacao');
-
-            $table->id();
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_responsavel');
+            $table->foreign('id_responsavel')->references('id')->on('responsaveis');
+            $table->unique('id_responsavel');
+
+            $table->unsignedBigInteger('id_complemento');
+            $table->foreign('id_complemento')->references('id')->on('complementos');
+            $table->unique('id_complemento');
+
+            $table->unsignedBigInteger('id_salario');
+            $table->foreign('id_salario')->references('id')->on('salarios');
+            $table->unique('id_salario');
         });
     }
 
@@ -37,6 +46,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // TODO: implementar drop de chave foreign
         Schema::dropIfExists('eventos');
     }
 };

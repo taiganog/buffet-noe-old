@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('complemento_eventos', function(Blueprint $table) {
+        Schema::create('complementos', function(Blueprint $table) {
             $table->id();
 
             $table->boolean('cascata');
@@ -30,10 +30,6 @@ return new class extends Migration
             $table->unsignedSmallInteger('garcom');
             $table->unsignedSmallInteger('cozinheiro');
             $table->unsignedSmallInteger('ajudante_cozinha');
-
-            $table->unsignedBigInteger('id_evento');
-            $table->foreign('id_evento')->references('id')->on('eventos');
-            $table->unique('id_evento');
         });
     }
 
@@ -42,11 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('complemento_eventos', function(Blueprint $table) {
-            $table->dropForeign('complemento_eventos_id_evento_foreign');
-            $table->dropColumn('id_evento');
-        });
-
         Schema::dropIfExists('complemento_eventos');
     }
 };

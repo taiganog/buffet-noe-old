@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salario_eventos', function (Blueprint $table) {
+        Schema::create('salarios', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedSmallInteger('salario_garcom');
@@ -21,10 +21,6 @@ return new class extends Migration
             $table->unsignedSmallInteger('salario_maitre');
             $table->unsignedSmallInteger('salario_salgado');
             $table->unsignedSmallInteger('salario_montagem');
-
-            $table->unsignedBigInteger('id_evento');
-            $table->foreign('id_evento')->references('id')->on('eventos');
-            $table->unique('id_evento');
         });
     }
 
@@ -33,11 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('salario_eventos', function(Blueprint $table) {
-            $table->dropForeign('salario_eventos_id_evento_foreign');
-            $table->dropColumn('id_evento');
-        });
-
         Schema::dropIfExists('salario_eventos');
     }
 };
