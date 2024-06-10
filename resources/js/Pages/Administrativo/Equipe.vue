@@ -4,6 +4,9 @@ import CadastroInput from '@/Components/Administrativo/CadastroInput.vue';
 import RotuloCadastro from '@/Components/Administrativo/RotuloCadastro.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
+// TODO
+// import InputError from '@/Components/InputError.vue';
+
 import { Head, useForm } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 
@@ -25,7 +28,7 @@ const cadastroToggle = computed(() => {
 });
 
 const enviar = () => {
-    form.post(route('equipe'), { preserveScroll: true, onSuccess: () => { form.reset(); }} );
+    form.post(route('equipe.salvar'), { preserveScroll: true, onSuccess: () => { form.reset(); }} );
 };
 
 </script>
@@ -42,14 +45,15 @@ const enviar = () => {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="sm:flex gap-3 justify-between">
                   <!-- Cadastro de novo funcionário -->
-                    <div class="bg-white sm:basis-1/4 overflow-hidden shadow-sm
-                                sm:rounded-lg p-4 relative mb-3 sm:mb-0 max-h-[360px]">
-                        <div class="sm:hidden text-sm absolute right-5 rounded-lg
-                                    bg-gray-300 p-1 border border-gray-500 select-none"
-                                    @click="cadastroVisible = !cadastroVisible">{{ cadastroToggle }}</div>
-                        <div class="font-semibold mb-5">Novo funcionário</div>
+                    <div class="bg-white sm:basis-4/12 overflow-hidden shadow-sm
+                                sm:rounded-lg relative mb-3 sm:mb-0 max-h-[390px]">
 
-                        <div v-show="cadastroVisible">
+                        <PrimaryButton class="sm:hidden text-sm absolute right-5 rounded-lg
+                                    bg-gray-300 border border-gray-500 select-none top-5"
+                                    @click="cadastroVisible = !cadastroVisible">{{ cadastroToggle }}</PrimaryButton>
+                        <div class="text-white p-6 bg-[#171717] font-semibold">Novo funcionário</div>
+
+                        <div v-show="cadastroVisible" class="p-5">
                             <form @submit.prevent="enviar">
                               <RotuloCadastro for="nome" value="Nome"/>
                               <CadastroInput
@@ -58,7 +62,7 @@ const enviar = () => {
                               id="nome"
                               v-model="form.nome" />
 
-                              <RotuloCadastro for="telefone" value="Telefone"/>
+                              <RotuloCadastro for="telefofne" value="Telefone"/>
                               <CadastroInput
                               type="tel"
                               class="mb-5"
@@ -80,11 +84,11 @@ const enviar = () => {
                     </div>
                     <!-- Display de funcionários existentes -->
                     <div class="bg-white sm:basis-2/3 overflow-hidden shadow-sm sm:rounded-lg
-                                p-4 relative">
+                                relative">
 
-                        <div class="font-semibold mb-5">Funcionários ativos</div>
+                        <div class="bg-[#171717] text-white p-6 font-semibold">Funcionários ativos</div>
 
-                        <div v-if="listaVisible && funcionarios" class="max-h-[600px] overflow-x-hidden sm:overflow-auto">
+                        <div v-if="listaVisible && funcionarios" class="max-h-[600px] overflow-x-hidden sm:overflow-auto p-4">
                             <table class="table-fixed w-full border-spacing-y-3 border-separate">
                                 <thead class="text-lg border-y-2 border-black">
                                   <tr>

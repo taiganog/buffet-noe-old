@@ -9,7 +9,7 @@ use Inertia\Inertia;
 class EventosController extends Controller
 {
     public function index() {
-        $eventos = DB::table('eventos')->orderBy('data')->get();
+        $eventos = DB::table('eventos')->orderBy('data', 'desc')->get();
 
         return Inertia::render('Administrativo/Eventos', [
             'eventos' => $eventos,

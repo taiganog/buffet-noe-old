@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/eventos', [EventosController::class, 'index'])->name('eventos');
     Route::get('/equipe', [EquipeController::class, 'index'])->name('equipe');
-    Route::post('/equipe', [EquipeController::class, 'create'])->name('equipe');
+    Route::post('/equipe', [EquipeController::class, 'create'])->name('equipe.salvar');
 
 
     // Rotas de Profile
