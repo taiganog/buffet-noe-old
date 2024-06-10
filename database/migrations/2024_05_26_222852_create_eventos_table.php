@@ -24,20 +24,9 @@ return new class extends Migration
                                     'CHURRASCO']);
             $table->unsignedSmallInteger('numero_convidados');
             $table->unsignedSmallInteger('valor');
-            $table->text('observacao');
+            $table->text('observacao')->nullable();
+
             $table->timestamps();
-
-            $table->unsignedBigInteger('id_responsavel');
-            $table->foreign('id_responsavel')->references('id')->on('responsaveis');
-            $table->unique('id_responsavel');
-
-            $table->unsignedBigInteger('id_complemento');
-            $table->foreign('id_complemento')->references('id')->on('complementos');
-            $table->unique('id_complemento');
-
-            $table->unsignedBigInteger('id_salario');
-            $table->foreign('id_salario')->references('id')->on('salarios');
-            $table->unique('id_salario');
         });
     }
 
@@ -46,7 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // TODO: implementar drop de chave foreign
         Schema::dropIfExists('eventos');
     }
 };

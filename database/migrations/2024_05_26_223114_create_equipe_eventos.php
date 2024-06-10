@@ -40,8 +40,6 @@ return new class extends Migration
 
             $table->dropColumn('id_evento');
             $table->dropColumn('id_funcionario');
-
-            $table->dropColumn('funcao');
         });
 
         Schema::dropIfExists('equipe_eventos');

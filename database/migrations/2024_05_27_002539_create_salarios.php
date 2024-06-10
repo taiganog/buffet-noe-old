@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('salarios', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedSmallInteger('salario_garcom');
-            $table->unsignedSmallInteger('salario_cozinheiro');
-            $table->unsignedSmallInteger('salario_ajudante_cozinha');
-            $table->unsignedSmallInteger('salario_porteiro');
-            $table->unsignedSmallInteger('salario_maitre');
-            $table->unsignedSmallInteger('salario_salgado');
-            $table->unsignedSmallInteger('salario_montagem');
+            $table->unsignedSmallInteger('salario_garcom')->nullable();
+            $table->unsignedSmallInteger('salario_cozinheiro')->nullable();
+            $table->unsignedSmallInteger('salario_ajudante_cozinha')->nullable();
+            $table->unsignedSmallInteger('salario_porteiro')->nullable();
+            $table->unsignedSmallInteger('salario_maitre')->nullable();
+            $table->unsignedSmallInteger('salario_salgado')->nullable();
+            $table->unsignedSmallInteger('salario_montagem')->nullable();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salario_eventos');
+        Schema::dropIfExists('salarios');
     }
 };
