@@ -16,12 +16,11 @@ return new class extends Migration
 
             $table->boolean('cascata');
             $table->boolean('salgado');
-            $table->boolean('bar');
-            $table->boolean('algodao_doce');
-            $table->boolean('porteiro');
+            $table->boolean('buffet');
             $table->boolean('maitre');
-            $table->boolean('montagem');
 
+            $table->unsignedSmallInteger('porteiro');
+            $table->unsignedSmallInteger('montagem');
             $table->unsignedSmallInteger('taca');
             $table->unsignedSmallInteger('cumbuca');
             $table->unsignedSmallInteger('prataria');
@@ -29,7 +28,15 @@ return new class extends Migration
             $table->unsignedSmallInteger('cestinha');
             $table->unsignedSmallInteger('garcom');
             $table->unsignedSmallInteger('cozinheiro');
+            $table->unsignedSmallInteger('bar');
             $table->unsignedSmallInteger('ajudante_cozinha');
+
+            $table->text('menu');
+
+            // FK
+            $table->unsignedBigInteger('id_evento');
+            $table->foreign('id_evento')->references('id')->on('eventos');
+            $table->unique('id_evento');
         });
     }
 
@@ -38,6 +45,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('complementos', function(Blueprint $table) {
+            $table->dropForeign('complementos_id_evento_foreign');
+            $table->dropColumn('id_evento');
+        });
+
         Schema::dropIfExists('complementos');
     }
 };

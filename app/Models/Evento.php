@@ -11,9 +11,7 @@ class Evento extends Model
 
     protected $table = 'eventos';
     protected $fillable = [
-        'nome',
-        'nome_responsavel',
-        'telefone_responsavel',
+        'local',
         'data',
         'tipo',
         'numero_convidados',

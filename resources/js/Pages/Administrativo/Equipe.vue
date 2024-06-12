@@ -10,8 +10,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 
-const props = defineProps<{
-    funcionarios?;
+defineProps<{
+    funcionarios?: Funcionario[];
 }>();
 
 const form = useForm({

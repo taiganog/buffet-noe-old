@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Responsavel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'telefone',
+        'telefone_2',
+        'cpf',
+        'rg',
+        'endereco'
+    ];
 }

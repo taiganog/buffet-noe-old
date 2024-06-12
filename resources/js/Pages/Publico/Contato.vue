@@ -33,6 +33,7 @@
 				<div class="p-10 text-center">
 					<h1 class="text-2xl md:text-4xl font-black mb-5">Orçamento Buffet</h1>
 					<span class="md:text-2xl">Nos conte sua ideia ou deixe um elogio, entraremos em contato!</span>
+					<hr class="w-11/12 m-auto mt-5 md:hidden">
 				</div>
 
 				<!-- Erros de validação para layout mobile -->
@@ -42,14 +43,14 @@
 
 				<form @submit.prevent="enviar" class="text-center">
 					<div class="md:grid md:grid-cols-2 md:gap-5 p-5">
-						<TextInput 
+						<TextInput
 							id="nome"
 							type="text"
 							placeholder="Insira seu nome"
 							v-model="form.nome"
 						/>
-						
-						<TextInput 
+
+						<TextInput
 							id="email"
 							type="email"
 							placeholder="Insira seu E-mail"
@@ -59,23 +60,23 @@
 						<span><InputError v-if="!telaMobile" :message="form.errors.nome" /></span>
 						<span><InputError v-if="!telaMobile" :message="form.errors.email" /></span>
 
-						<TextInput 
+						<TextInput
 							id="telefone"
 							type="tel"
 							v-mask="'(00) 90000-0000'"
 							placeholder="Insira seu telefone"
-							v-model="form.telefone"		
+							v-model="form.telefone"
 						/>
 
 						<SelectInput
 							id="tipo"
-							v-model="form.tipo"	
+							v-model="form.tipo"
 						/>
 						<!-- Erros de validação para desktop -->
 						<span><InputError v-if="!telaMobile" :message="form.errors.telefone" /></span>
 						<span><InputError v-if="!telaMobile" :message="form.errors.tipo" /></span>
 
-						<TextArea class="sm:col-start-1 sm:col-end-3" 
+						<TextArea class="sm:col-start-1 sm:col-end-3"
 							id="mensagem"
 							v-model="form.mensagem"
 							placeholder="Conte-nos sobre sua ideia!"
@@ -85,7 +86,7 @@
 					</div>
 
 					<input type="submit" value="Enviar" :disabled="form.processing" class="p-5 bg-green-500 rounded-xl border-2 border-green-700 focus:bg-green-600 m-5 w-1/3">
-				</form> 
+				</form>
 			</div>
 		</div>
 	</LayoutPrincipal>

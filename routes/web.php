@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     // Rotas Administrativas
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/eventos', [EventosController::class, 'index'])->name('eventos');
+    Route::post('/eventos', [EventosController::class, 'create'])->name('eventos.salvar');
     Route::get('/equipe', [EquipeController::class, 'index'])->name('equipe');
     Route::post('/equipe', [EquipeController::class, 'create'])->name('equipe.salvar');
 

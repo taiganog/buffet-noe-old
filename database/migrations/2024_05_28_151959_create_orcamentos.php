@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orcamentos', function(Blueprint $table) {
+            $table->id();
+
             $table->string('nome', length: 100);
             $table->string('telefone', length: 15);
             $table->string('email', length: 100);

@@ -11,16 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salarios', function (Blueprint $table) {
+        Schema::create('valores', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedSmallInteger('salario_garcom')->nullable();
-            $table->unsignedSmallInteger('salario_cozinheiro')->nullable();
-            $table->unsignedSmallInteger('salario_ajudante_cozinha')->nullable();
-            $table->unsignedSmallInteger('salario_porteiro')->nullable();
-            $table->unsignedSmallInteger('salario_maitre')->nullable();
-            $table->unsignedSmallInteger('salario_salgado')->nullable();
-            $table->unsignedSmallInteger('salario_montagem')->nullable();
+            $table->unsignedSmallInteger('cascata');
+            $table->unsignedSmallInteger('salgado');
+            $table->unsignedSmallInteger('buffet');
+            $table->unsignedSmallInteger('maitre');
+
+            $table->unsignedSmallInteger('porteiro');
+            $table->unsignedSmallInteger('montagem');
+            $table->unsignedSmallInteger('taca');
+            $table->unsignedSmallInteger('cumbuca');
+            $table->unsignedSmallInteger('prataria');
+            $table->unsignedSmallInteger('louça_sobremesa');
+            $table->unsignedSmallInteger('cestinha');
+            $table->unsignedSmallInteger('garcom');
+            $table->unsignedSmallInteger('cozinheiro');
+            $table->unsignedSmallInteger('bar');
+            $table->unsignedSmallInteger('ajudante_cozinha');
+
+            // FK
+            $table->unsignedBigInteger('id_evento');
+            $table->foreign('id_evento')->references('id')->on('eventos');
+            $table->unique('id_evento');
         });
     }
 
@@ -29,6 +43,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salarios');
+        Schema::table('valores', function(Blueprint $table) {
+            $table->dropForeign('valores_id_evento_foreign');
+            $table->dropColumn('id_evento');
+        });
+
+        Schema::dropIfExists('valores');
     }
 };

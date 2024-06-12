@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         Funcionario::factory(40)->create();
-        Evento::factory(10)->create();
+        // Evento::factory(10)->create();
     }
 }
