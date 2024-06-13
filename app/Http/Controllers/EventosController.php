@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventoCreateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
+
+use App\Models\Responsavel;
+use App\Models\Evento;
+use App\Models\Complemento;
 
 class EventosController extends Controller
 {
@@ -29,7 +34,6 @@ class EventosController extends Controller
                 case 'FORMATURA':           $eventos[$key]->{ 'tipo' } = 'Formatura'; break;
                 case 'CONFRATERNIZACAO':    $eventos[$key]->{ 'tipo' } = 'Confraternização'; break;
                 case 'CHURRASCO':           $eventos[$key]->{ 'tipo' } = 'Churrasco'; break;
-
             }
         }
     }
@@ -44,7 +48,11 @@ class EventosController extends Controller
         ]);
     }
 
-    public function save(Request $request): Response {
+    public function create(EventoCreateRequest $request): Response {
+        $request->validate();
 
+
+
+        return back();
     }
 }

@@ -7,6 +7,7 @@ import RotuloCadastro from '@/Components/Administrativo/RotuloCadastro.vue';
 import SelectInput from '@/Components/SelectInput.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import TextArea from '@/Components/TextArea.vue';
+import InputError from '@/Components/InputError.vue';
 
 import { Head, useForm } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
@@ -125,6 +126,7 @@ const eventoAtual = ref(1);
                             <PrimaryButton @click="closeModal">Fechar</PrimaryButton>
                         </div>
 
+                        <!-- TODO - Implementar InputError em form -->
                         <form @submit.prevent='enviar'>
                             <div class="p-3 text-sm grid grid-cols-2 gap-2">
                                 <!-- Responsável -->
@@ -165,19 +167,21 @@ const eventoAtual = ref(1);
                                         <CadastroInput id="local" type="text" v-model="form.local" />
 
                                         <RotuloCadastro class="content-center" for="data">Data: </RotuloCadastro>
-                                        <CadastroInput id="data" type="date" v-model="form.data" />
+                                        <CadastroInput id="data" type="date"v-model="form.data" />
 
                                         <RotuloCadastro class="content-center" for="numero_convidados">Nº de Convidados: </RotuloCadastro>
                                         <CadastroInput id="numero_convidados" type="text" v-model="form.numero_convidados" />
 
                                         <RotuloCadastro class="content-center" for="tipo">Tipo de Evento: </RotuloCadastro>
-                                        <SelectInput class="h-auto w-full bg-slate-200 rounded-lg border-1
+                                        <SelectInput class="h-auto w-full bg-slate-200 rounded-lg
                                                     focus:border-0 focus:ring-2 focus:ring-yellow-400
                                                     border-[#6b7280]"
                                                     id="tipo"
                                                     v-model="form.tipo" />
                                     </div>
                                 </div>
+
+                                <div v-show="form.hasErrors" class="text-center">Cheque as informações - Formulário preenchido errado!</div>
 
                                 <!-- Envio de formulário de cadastro de evento inicial -->
                                 <div class="p-2 col-start-1 col-end-3 text-center">
