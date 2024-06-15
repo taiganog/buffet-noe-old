@@ -50,6 +50,7 @@ const eventoVisible = ref(true);
 const eventoModal = ref(false);
 const cadastroModal = ref(false);
 const complementosModal = ref(false);
+const dia = ref('');
 
 const eventoAtual = ref(1);
 </script>
@@ -143,13 +144,13 @@ const eventoAtual = ref(1);
                                         <CadastroInput id="endereco" type="text" v-model="form.endereco" />
 
                                         <RotuloCadastro class="content-center" for="telefone">Telefone: </RotuloCadastro>
-                                        <CadastroInput id="telefone" type="tel" v-model="form.telefone" />
+                                        <CadastroInput id="telefone" type="tel" v-mask="'(00) 90000-0000'" v-model="form.telefone" />
 
                                         <RotuloCadastro class="content-center" for="telefone_2">Telefone Secundário: </RotuloCadastro>
-                                        <CadastroInput id="telefone_2" type="tel" v-model="form.telefone_2" />
+                                        <CadastroInput id="telefone_2" type="tel" v-mask="'(00) 90000-0000'" v-model="form.telefone_2" />
 
                                         <RotuloCadastro class="content-center" for="cpf">CPF/CNPJ: </RotuloCadastro>
-                                        <CadastroInput id="cpf" type="text" v-model="form.cpf"/>
+                                        <CadastroInput id="cpf" type="text" v-mask="'000.000.000-00'" v-model="form.cpf"/>
 
                                         <RotuloCadastro class="content-center" for="rg">RG: </RotuloCadastro>
                                         <CadastroInput id="rg" type="text" v-model="form.rg"/>
@@ -167,7 +168,7 @@ const eventoAtual = ref(1);
                                         <CadastroInput id="local" type="text" v-model="form.local" />
 
                                         <RotuloCadastro class="content-center" for="data">Data: </RotuloCadastro>
-                                        <CadastroInput id="data" type="date"v-model="form.data" />
+                                        <input id="data" type="date" />
 
                                         <RotuloCadastro class="content-center" for="numero_convidados">Nº de Convidados: </RotuloCadastro>
                                         <CadastroInput id="numero_convidados" type="text" v-model="form.numero_convidados" />
@@ -180,7 +181,7 @@ const eventoAtual = ref(1);
                                                     v-model="form.tipo" />
                                     </div>
                                 </div>
-
+                                <span>{{ form.errors }}</span>
                                 <div v-show="form.hasErrors" class="text-center">Cheque as informações - Formulário preenchido errado!</div>
 
                                 <!-- Envio de formulário de cadastro de evento inicial -->

@@ -26,7 +26,7 @@ class EventoCreateRequest extends FormRequest
             'telefone'          => ['required', 'min:14', 'max:15'],
             'telefone_2'        => ['required', 'min:14', 'max:15'],
             'cpf'               => ['required', 'min:14', 'max:18'],
-            'rg'                => ['required', 'min:9'],
+            'rg'                => ['required', 'max:13'],
             'endereco'          => ['required'],
 
             // Evento
@@ -55,7 +55,7 @@ class EventoCreateRequest extends FormRequest
             'cpf.min'                       => 'Formato XXX.XXX.XXX-XX',
 
             'rg.required'                   => 'O campo "RG" é obrigatório',
-            'rg.min'                        => 'Formato XXX.XXX.XXX-XX',
+            'rg.max'                        => 'RG Inválido',
 
             'endereco.required'             => 'O campo "Endereço" é obrigatório',
 
@@ -66,5 +66,18 @@ class EventoCreateRequest extends FormRequest
             'numero_convidados.required'    => 'O campo "Convidados" é obrigatório',
             'numero_convidados.numeric'     => 'Aceito somente números',
         ];
+    }
+
+    public function getResponsavel(): array {
+        $responsavel = [
+            'nome'          => $this->input('nome'),
+            'endereco'      => $this->input('endereco'),
+            'telefone'      => $this->input('telefone'),
+            'telefone_2'    => $this->input('telefone_2'),
+            'cpf'           => $this->input('cpf'),
+            'rg'            => $this->input('rg'),
+        ];
+
+        return $responsavel;
     }
 }

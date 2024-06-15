@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const model = defineModel<string>({ required: true });
+const model = defineModel<string | null>({ required: true });
 
 const input = ref<HTMLInputElement | null>(null);
 </script>

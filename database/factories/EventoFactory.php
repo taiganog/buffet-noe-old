@@ -19,9 +19,7 @@ class EventoFactory extends Factory
     {
 
         return [
-            'nome'                  => fake()->name(),
-            'nome_responsavel'      => fake()->name(),
-            'telefone_responsavel'  => fake()->numerify('(##) #####-####'),
+            'local'                 => fake()->paragraph($nb = 1),
             'data'                  => fake()->date($format = 'Y-m-d'),
             'tipo'                  => fake()->randomElement(['FESTA_INFANTIL',
                                                             '15_ANOS',
